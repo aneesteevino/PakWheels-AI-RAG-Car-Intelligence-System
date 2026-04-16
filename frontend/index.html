@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PakWheels AI — Car Intelligence</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ═══ SIDEBAR ═══════════════════════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">
+      <span class="logo-icon">🚗</span>
+      <div>
+        <div class="logo-name">PakWheels AI</div>
+        <div class="logo-sub">Car Intelligence System</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-label">DATASET</div>
+    <div class="stat-grid" id="globalStats">
+      <div class="stat-card"><div class="stat-val" id="statTotal">—</div><div class="stat-lbl">Listings</div></div>
+      <div class="stat-card"><div class="stat-val" id="statAvg">—</div><div class="stat-lbl">Avg Price</div></div>
+      <div class="stat-card"><div class="stat-val" id="statCities">—</div><div class="stat-lbl">Cities</div></div>
+      <div class="stat-card"><div class="stat-val" id="statMakes">—</div><div class="stat-lbl">Brands</div></div>
+    </div>
+  </div>
+
+  <div class="sidebar-section">
+    <div class="sidebar-label">TRY ASKING</div>
+    <div id="suggestions" class="suggestions"></div>
+  </div>
+
+  <div class="sidebar-footer">
+    <span>Powered by Groq · FAISS · LLaMA 3</span>
+  </div>
+</aside>
+
+<!-- ═══ MAIN ══════════════════════════════════════════════════════════════ -->
+<main class="main">
+  <!-- Top bar -->
+  <header class="topbar">
+    <button class="menu-btn" id="menuBtn" onclick="toggleSidebar()">☰</button>
+    <div class="topbar-title">PakWheels Car Intelligence</div>
+    <div class="topbar-badge">RAG · LLM</div>
+  </header>
+
+  <!-- Chat area -->
+  <div class="chat-area" id="chatArea">
+    <!-- Welcome card -->
+    <div class="welcome-card" id="welcomeCard">
+      <div class="welcome-icon">🚘</div>
+      <h2>Ask anything about Pakistan's used car market</h2>
+      <p>Powered by 77,000+ real PakWheels listings with AI retrieval</p>
+      <div class="welcome-chips" id="welcomeChips"></div>
+    </div>
+  </div>
+
+  <!-- Input area -->
+  <div class="input-area">
+    <div class="input-box">
+      <textarea
+        id="queryInput"
+        placeholder="Ask about cars… e.g. 'Average price of Toyota Corolla in Lahore'"
+        rows="1"
+        onkeydown="handleKey(event)"
+        oninput="autoResize(this)"
+      ></textarea>
+      <button class="send-btn" id="sendBtn" onclick="sendQuery()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+        </svg>
+      </button>
+    </div>
+    <div class="input-hint">PakWheels AI may make mistakes. Verify important info.</div>
+  </div>
+</main>
+
+<!-- ═══ CAR MODAL ══════════════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

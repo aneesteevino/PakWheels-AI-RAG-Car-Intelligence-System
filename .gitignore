@@ -1,0 +1,29 @@
+﻿# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+pip-log.txt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project specific
+data/faiss_index.pkl
+data/tfidf_index.pkl
+*.pkl
+*.log
+.env
